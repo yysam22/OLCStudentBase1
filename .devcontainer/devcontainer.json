@@ -11,5 +11,4 @@
         }
     },
     "postCreateCommand": "code --install-extension ms-vsliveshare.vsliveshare",  // Deferred extension installation
-    "updateContentCommand": "pip install -r requirements.txt"  // Deferred package installation
 }
