@@ -1,26 +1,15 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "features": {
-        "ghcr.io/devcontainers/features/desktop-lite:1": {}
-    },
-    "forwardPorts": [6080],  // Forwarding the desktop-lite port
-    "portsAttributes": {
-        "6080": {
-            "label": "desktop"
-        }
-    },
+    "image": "mcr.microsoft.com/devcontainers/python:3.9",  // Leaner base image
+    "features": {},  // Removed unnecessary features
+    "forwardPorts": [],  // No ports forwarded unless necessary
     "customizations": {
         "vscode": {
-            "extensions": [
-                "ms-vsliveshare.vsliveshare",  // Live Share extension
-                "ms-python.python",  // Python extension
-                "vsls-contrib.gitdoc"  // Ensure GitDoc is listed here for automatic installation
-            ],
+            "extensions": ["ms-python.python"],  // Core extensions only
             "settings": {
-                "gitdoc.enabled": true,
-                "git.autofetch": true,
-                "gitdoc.autoCommitDelay": 5000
+                "git.autofetch": true
             }
         }
-    }
+    },
+    "postCreateCommand": "code --install-extension ms-vsliveshare.vsliveshare",  // Deferred extension installation
+    "updateContentCommand": "pip install -r requirements.txt"  // Deferred package installation
 }
