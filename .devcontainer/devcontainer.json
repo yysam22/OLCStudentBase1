@@ -1,14 +1,19 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/python:3.9",  // Leaner base image
-    "features": {},  // Removed unnecessary features
-    "forwardPorts": [],  // No ports forwarded unless necessary
+    "image": "mcr.microsoft.com/devcontainers/python:3.9",
     "customizations": {
         "vscode": {
-            "extensions": ["ms-python.python"],  // Core extensions only
+            "extensions": [
+                "ms-python.python",  // Essential Python extension
+                "ms-vsliveshare.vsliveshare",  // Live Share for collaboration
+                "knisterpeter.auto-commit"  // Auto Commit for periodic saves
+            ],
             "settings": {
-                "git.autofetch": true
+                "auto-commit.enable": true,  // Enable Auto Commit
+                "auto-commit.message": "Auto-commit by extension",
+                "auto-commit.intervalSeconds": 300  // Commit every 5 minutes
             }
         }
     },
-    "postCreateCommand": "code --install-extension ms-vsliveshare.vsliveshare",  // Deferred extension installation
+    "postCreateCommand": "pip install -r requirements.txt || echo 'No requirements to install'",
+    "forwardPorts": []
 }
